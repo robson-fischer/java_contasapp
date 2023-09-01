@@ -6,9 +6,11 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
+import br.com.cotiinformatica.cache.CacheControl;
 import br.com.cotiinformatica.repositories.ContaRepository;
 import br.com.cotiinformatica.repositories.UsuarioRepository;
 @Configuration
@@ -57,4 +59,9 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter {
 		// passsando para o construtor da classe o DATA SOURCE
 		return new ContaRepository(getDataSource());
 	}
+	@Override
+	public void addInterceptors(InterceptorRegistry registry) {
+		registry.addInterceptor(new CacheControl());
+	}
 }
+
