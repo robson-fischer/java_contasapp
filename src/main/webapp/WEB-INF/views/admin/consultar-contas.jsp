@@ -83,11 +83,13 @@
 								</td>
 								<td>${conta.nome}</td>
 								<td>
-									<a href="/java_contasapp/admin/editar-contas"
+									<a href="/java_contasapp/admin/editar-contas?id=${conta.id}"
 									 class="btn btn-sm btn-outline-primary">
 										Editar
 									</a>
-									<a href="#" class="btn btn-sm btn-outline-danger">
+									<a href="/java_contasapp/admin/excluir-contas?id=${conta.id}"
+										onclick="return confirm('Deseja excluir esta conta?');"
+										class="btn btn-sm btn-outline-danger">
 										Excluir
 									</a>
 								</td>

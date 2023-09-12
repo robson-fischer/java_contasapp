@@ -12,6 +12,7 @@ public class LogoutController {
 
 		// apagar os dados do usuário gravado em sessão
 		request.getSession().removeAttribute("usuario_auth");
+		request.getSession().invalidate();
 
 		// redirecionar de volta para a página de login do sistema
 		ModelAndView modelAndView = new ModelAndView();
